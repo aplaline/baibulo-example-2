@@ -1,20 +1,44 @@
 {
-  "name": "@padcom/baibulo-presentation-example",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "hello-world",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "build": "echo \"Building...\"",
-    "deploy": "echo \"Deploying...\""
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "deploy": "echo \"Deploying.. (TODO!)\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aplaline/baibulo-example-2.git"
+  "dependencies": {
+    "vue": "^2.5.17"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aplaline/baibulo-example-2/issues"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "vue-template-compiler": "^2.5.17"
   },
-  "homepage": "https://github.com/aplaline/baibulo-example-2#readme"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
