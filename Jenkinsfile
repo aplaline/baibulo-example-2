@@ -10,32 +10,28 @@ pipeline {
         }
         stage('Install NPM packages') {
             steps {
-                nodejs(nodeJSInstallationName: '10.x') {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
         stage('Build') {
             steps {
-                nodejs(nodeJSInstallationName: '10.x') {
-                    sh 'npm run build'
-                }
+                sh 'npm run build'
             }
         }
         stage('Deploy feature branch') {
-            when { not { branch 'master' } }
+            when {
+                not { branch 'master' }
+            }
             steps {
-                nodejs(nodeJSInstallationName: '10.x') {
-                    sh 'npm run deploy'
-                }
+                sh 'npm run deploy'
             }
        }
        stage('Deploy release') {
-            when { branch 'master'}
+            when {
+                branch 'master'
+            }
             steps {
-                nodejs(nodeJSInstallationName: '10.x') {
-                    sh 'npm run release'
-                }
+                sh 'npm run release'
             }
         }
     }
