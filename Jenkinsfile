@@ -1,5 +1,7 @@
 pipeline {
     agent any
+    triggers { pollSCM('* * * * *') }
+    tools { nodejs '10.x' }
     stages {
         stage('Cleanup') {
             steps {
@@ -21,9 +23,7 @@ pipeline {
             }
         }
         stage('Deploy feature branch') {
-            when {
-                expression { env.GIT_BRANCH != 'master' }
-            }
+            when { not { branch 'master' } }
             steps {
                 nodejs(nodeJSInstallationName: '10.x') {
                     sh 'npm run deploy'
@@ -31,9 +31,7 @@ pipeline {
             }
        }
        stage('Deploy release') {
-            when {
-                expression { env.GIT_BRANCH == 'master' }
-            }
+            when { branch 'master'}
             steps {
                 nodejs(nodeJSInstallationName: '10.x') {
                     sh 'npm run release'
