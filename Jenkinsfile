@@ -20,10 +20,23 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy feature branch') {
+            when {
+                expression { env.GIT_BRANCH != 'master' }
+            }
             steps {
                 nodejs(nodeJSInstallationName: '10.x') {
                     sh 'npm run deploy'
+                }
+            }
+       }
+       stage('Deploy release') {
+            when {
+                expression { env.GIT_BRANCH == 'master' }
+            }
+            steps {
+                nodejs(nodeJSInstallationName: '10.x') {
+                    sh 'npm run release'
                 }
             }
         }
