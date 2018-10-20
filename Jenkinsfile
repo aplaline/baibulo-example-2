@@ -1,9 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage('Stage 1') {
+        stage('Cleanup') {
             steps {
-                echo 'Hello world!!! from branch ' + env.BRANCH_NAME
+                sh 'rm -rf node_modules dist'
+            }
+        }
+        stage('Build') {
+            steps {
+                nodejs(nodeJSInstallationName: '10.x') {
+                    sh 'npm run build'
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                nodejs(nodeJSInstallationName: '10.x') {
+                    sh 'npm run deploy'
+                }
             }
         }
     }
