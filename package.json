@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "baibulo deploy --dir dist --url http://172.17.0.1:3000 --version $env.GIT_BRANCH"
+    "deploy": "baibulo deploy --dir dist --url http://172.17.0.1:3000 --version $GIT_BRANCH"
   },
   "dependencies": {
     "vue": "^2.5.17"
