@@ -21,9 +21,20 @@ pipeline {
             }
         }
         stage('Deploy') {
+            when {
+                expression { env.GIT_BRANCH != 'master' }
+            }
             steps {
                 nodejs(nodeJSInstallationName: '10.x') {
                     sh 'npm run deploy'
+                }
+            }
+            when {
+                expression { env.GIT_BRANCH == 'master' }
+            }
+            steps {
+                nodejs(nodeJSInstallationName: '10.x') {
+                    sh 'npm run release'
                 }
             }
         }
