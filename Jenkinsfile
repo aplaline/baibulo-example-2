@@ -20,7 +20,7 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
+        stage('Deploy feature branch') {
             when {
                 expression { env.GIT_BRANCH != 'master' }
             }
@@ -29,6 +29,8 @@ pipeline {
                     sh 'npm run deploy'
                 }
             }
+       }
+       stage('Deploy release') {
             when {
                 expression { env.GIT_BRANCH == 'master' }
             }
