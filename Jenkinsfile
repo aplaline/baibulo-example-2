@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    triggers { pollSCM('* * * * *') }
     tools { nodejs '10.x' }
     stages {
         stage('Cleanup') {
