@@ -6,6 +6,13 @@ pipeline {
                 sh 'rm -rf node_modules dist'
             }
         }
+        stage('Install NPM packages') {
+            steps {
+                nodejs(nodeJSInstallationName: '10.x') {
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Build') {
             steps {
                 nodejs(nodeJSInstallationName: '10.x') {
