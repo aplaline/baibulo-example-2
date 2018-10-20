@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>Hello, world!</h1>
+    <h1>Hello, world!!!</h1>
     <img alt="Vue logo" src="./assets/logo.png">
     <p>{{ counter }}</p>
     <button @click="increment">Click me!</button>
